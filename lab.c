@@ -1,11 +1,14 @@
 /* Tentativa em C de criar o Labirinto
     - Possui melhor controle de memória
-    - Melhor manipulação de arquivos */
+    - Melhor manipulação de arquivos
+    - Servirá como base para posteriormente implementar novas soluções de IA
+*/
 
 //Bibliotecas
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "tad.h"
 
 //Variáveis globais
 char** mapa; /* Varável global que armazenará o mapa do labirinto, para ser utilizada por todas as funções
@@ -70,16 +73,17 @@ void gera_posicao(int *vetor){
     int x, y, min = 0, max = 7;
     srand(time(NULL));
 
-    x = min + rand() % (max - min + 1);
-    if(x == 1)
-        x = 7;
+    x = rand() % 8; //Gera linha da posição na matriz
+    y = rand() % 8; //Gera coluna da posição na matriz
 
-    y = min + rand() % (max - min + 1);
-    if(y == 1)
-        y = 7;
+    if(x >= 1 && x <= 6){
+        if(y >= 1 && y <= 3){
+            y = 0;
+        }else if(y >= 4 && y <= 6){
+            y = 7;
+        }
+    }
 
-
-    printf("X = %d e Y = %d\n", x, y);
     vetor[0] = x;
     vetor[1] = y;
 }
@@ -94,11 +98,5 @@ int calcula_heuristica(int *inicio, int *fim){
     return heuristca;
 }
 void ia_jogando(int heuristica, int *inicio, int *fim){
-    char** copy = mapa;
 
-    copy[inicio[0]][inicio[1]] = 'A';
-    copy[fim[0]][fim[1]] = 'X';
-
-    for(int i = 0; i < 8; i++)
-        printf("%s\n", copy[i]);
 }
