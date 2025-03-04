@@ -19,20 +19,25 @@ void le_mapa();
 void aloca_mapa(int linhas, int colunas);
 void gera_posicao(int *vetor);
 int calcula_heuristica(int *inicio, int *fim);
-void ia_jogando(int heuristica, int *inicio, int *fim);
+void ia_jogando(Caminhos *inicio, int *fim);
 
 //Função Main
 int main(){
-    int posicao_inicial[2], posicao_final[2], heuristica;
+    int posicao_inicial[2], posicao_final[2];
+    Caminhos inicio;
+
     printf("Lê mapa!\n");
     le_mapa();
 
     gera_posicao(posicao_inicial);
     gera_posicao(posicao_final);
 
-    heuristica = calcula_heuristica(posicao_inicial, posicao_final);
+    inicio.heuristc = calcula_heuristica(posicao_inicial, posicao_final);
+    inicio.position[0] = posicao_inicial[0];
+    inicio.position[1] = posicao_inicial[1];
+    inicio.ja_visto = 1;
 
-    ia_jogando(heuristica, posicao_inicial, posicao_final);
+    ia_jogando(&inicio, posicao_final);
 
     printf("\nFinalizado!\n");
     return 0;
@@ -88,15 +93,8 @@ void gera_posicao(int *vetor){
     vetor[1] = y;
 }
 int calcula_heuristica(int *inicio, int *fim){
-    int heuristca, a , b;
-
-    a = abs(inicio[0] - fim[0]);
-    b = abs(inicio[1] - fim[1]);
-
-    heuristca = a + b;
-
-    return heuristca;
+    return abs(inicio[0] - fim[0]) + abs(inicio[1] - fim[1]);
 }
-void ia_jogando(int heuristica, int *inicio, int *fim){
+void ia_jogando(Caminhos *inicio, int *fim){
 
 }

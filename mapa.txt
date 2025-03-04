@@ -1,9 +1,9 @@
 8;8
-O|OOOOOO
-O||||||O
-OOOOO|OO
-||||O||O
-OOOOOO|O
-O||||O|O
-OOOO|OOO
-|||OOO|O
+O#OOOOOO
+O######O
+OOOOO#OO
+####O##O
+OOOOOO#O
+O####O#O
+OOOO#OOO
+###OOO#O
