@@ -48,10 +48,8 @@ def choose_path(paths, last):
     heuristics = [calc_heuristc(pos) for pos in paths]
     min_heuristic = min(heuristics)
 
-    # Filtra caminhos com a heurística mínima
     candidates = [pos for pos, h in zip(paths, heuristics) if h == min_heuristic]
 
-    # Prefere caminhos não repetidos (evita voltar)
     if last in candidates and len(candidates) > 1:
         candidates.remove(last)
 
@@ -66,11 +64,9 @@ def main():
 
     while position != end:
         possible_paths = get_paths(position, lab_map, seen_paths)
-
         if not possible_paths:
             print("Sem saída!")
             return
-
         next_step = choose_path(possible_paths, last_step)
         last_step = position
         position = next_step
