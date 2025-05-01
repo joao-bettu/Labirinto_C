@@ -51,4 +51,4 @@ def choose_path (path):
             shortest = heuristics[i]
             index_shortest = indexOf(heuristics[i])
 
-    return index_shortest
+    return path[index_shortest]
